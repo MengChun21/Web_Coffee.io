@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Golden Brown</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../CSS/Style.css" />
+    <link href="https://cdn.lineicons.com/5.0/lineicons.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Redesigned header: white background, subtle shadow, search box -->
+    <!-- Redesigned header: gray background, subtle shadow, white search box -->
+    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm py-3">
+      <div class="container-fluid">
+        <a class="navbar-brand ms-5" href="#home">Golden Brown</a>
+        <!-- Mobile search icon removed (search not shown on mobile) -->
+        <button
+          class="btn btn-link text-light d-none me-2"
+          id="mobileSearchBtn"
+          aria-label="Open search"
+        >
+          <i class="lni lni-search"></i>
+        </button>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse w-100" id="navbarNavDropdown">
+          <!-- Keep nav centered on larger screens, but flow normally on mobile so toggler works -->
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item mx-3">
+              <a class="nav-link active" href="#home">Home</a>
+            </li>
+            <li class="nav-item mx-3">
+              <a class="nav-link active" href="#services">Services</a>
+            </li>
+            <li class="nav-item mx-3">
+              <a class="nav-link active" href="#about">About</a>
+            </li>
+            <li class="nav-item mx-3">
+              <a class="nav-link active" href="#contact">Contact</a>
+            </li>
+            <li class="nav-item dropdown mx-3">
+              <!-- Added id + aria attributes for better accessibility and mobile behavior -->
+              <a
+                class="nav-link dropdown-toggle active"
+                href="#"
+                id="moreDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >More</a
+              >
+              <ul class="dropdown-menu" aria-labelledby="moreDropdown">
+                <li><a class="dropdown-item" href="#">Account</a></li>
+                <li><a class="dropdown-item" href="#">Dashboard</a></li>
+                <li><a class="dropdown-item" href="#">Control Panel</a></li>
+              </ul>
+            </li>
+          </ul>
+          <!-- Search box (replaces Get Started). Visible always; styled to be inline rectangle on desktop and full-width inside collapsed menu on mobile -->
+          <ul
+            class="navbar-nav ms-auto me-5 align-items-center d-none d-lg-flex"
+          >
+            <li class="nav-item me-3">
+              <button
+                class="btn btn-link text-light position-relative"
+                id="cartBtn"
+                aria-label="Open cart"
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M6 6H21L20 12H9L6 6Z"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></path>
+                  <circle cx="10" cy="19" r="1" fill="currentColor"></circle>
+                  <circle cx="18" cy="19" r="1" fill="currentColor"></circle>
+                </svg>
+                <span
+                  class="badge bg-primary rounded-pill position-absolute top-0 start-100 translate-middle cart-badge"
+                  id="cartCount"
+                  style="font-size: 0.7rem; display: none"
+                  >0</span
+                >
+              </button>
+            </li>
+            <li class="nav-item w-100">
+              <form class="d-flex w-100" role="search" id="headerSearchForm">
+                <div class="input-group w-100 position-relative search-wrapper">
+                  <input
+                    id="mainSearchInput"
+                    class="form-control form-control-sm search-input pe-4"
+                    type="search"
+                    placeholder="Search..."
+                    aria-label="Search"
+                  />
+                  <span
+                    class="input-icon d-flex align-items-center justify-content-center"
+                    title="Search"
+                    role="button"
+                    tabindex="0"
+                  >
+                    <!-- Inline SVG search icon for reliable display -->
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M21 21L15.8 15.8M10.5 18C14.6421 18 18 14.6421 18 10.5C18 6.35786 14.6421 3 10.5 3C6.35786 3 3 6.35786 3 10.5C3 14.6421 6.35786 18 10.5 18Z"
+                        stroke="#6b7280"
+                        stroke-width="1.6"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </span>
+                </div>
+              </form>
+            </li>
+          </ul>
+          <!-- Cart link for mobile inside collapsed navbar -->
+          <ul class="navbar-nav d-lg-none">
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="mobileCartLink"
+                >Cart
+                <span id="mobileCartCount" class="text-primary small"></span
+              ></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Carousel -->
+    <a id="home"></a>
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#heroCarousel"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#heroCarousel"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#heroCarousel"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+        ></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img
+            src="../Image/1015556.jpg"
+            class="d-block w-100 carousel-img"
+            alt="Slide 1 - placeholder"
+          />
+          <div class="carousel-caption d-none d-md-block">
+            <h3>Freshly Roasted</h3>
+            <p>Small-batch roasts, rich flavors — crafted with care.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img
+            src="../Image/389822-blackangel.jpg"
+            class="d-block w-100 carousel-img"
+            alt="Slide 2 - placeholder"
+          />
+          <div class="carousel-caption d-none d-md-block">
+            <h3>A Perfect Pairing</h3>
+            <p>Pair our blends with freshly made pastries.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img
+            src="../Image/924621.jpg"
+            class="d-block w-100 carousel-img"
+            alt="Slide 3 - placeholder"
+          />
+          <div class="carousel-caption d-none d-md-block">
+            <h3>Join the Club</h3>
+            <p>Subscriptions for coffee lovers — delivered monthly.</p>
+          </div>
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#heroCarousel"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#heroCarousel"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container my-5">
+      <!-- Services Section -->
+      <section id="services" class="py-5">
+        <h2 class="text-center mb-4">Our Services</h2>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div
+              class="service-card p-4 bg-white rounded shadow-sm text-center h-100"
+            >
+              <div class="service-icon mb-3">☕</div>
+              <h3 class="mb-2">Roast & Supply</h3>
+              <p class="text-muted">
+                Small-batch roasting with roast profiles tailored to bring out
+                tasting notes.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div
+              class="service-card p-4 bg-white rounded shadow-sm text-center h-100"
+            >
+              <div class="service-icon mb-3">📦</div>
+              <h3 class="mb-2">Subscription Boxes</h3>
+              <p class="text-muted">
+                Flexible subscription plans for fresh beans or pastries
+                delivered to your door.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div
+              class="service-card p-4 bg-white rounded shadow-sm text-center h-100"
+            >
+              <div class="service-icon mb-3">🍪</div>
+              <h3 class="mb-2">Catering & Events</h3>
+              <p class="text-muted">
+                Coffee catering for events, including setup, barista services,
+                and supplies.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Testimonials -->
+      <section class="testimonials py-5">
+        <h2 class="text-center mb-4">What our customers say</h2>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="testimonial-card p-4 bg-white rounded shadow-sm h-100">
+              <p class="mb-2 text-muted">
+                "The coffee is fresh and delicious. I love the variety and the
+                friendly team!"
+              </p>
+              <div class="d-flex align-items-center mt-3">
+                <div class="avatar rounded-circle me-3">
+                  <img
+                    src="../Image/Official_Presidential_Portrait_of_President_Donald_J._Trump_(2025).jpg.webp"
+                    alt="Donald Trump"
+                    onerror="this.style.display='none'"
+                  />
+                  <span class="initials">D</span>
+                </div>
+                <div>
+                  <strong>Donald Trump.</strong>
+                  <div class="small text-muted">Ohio</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="testimonial-card p-4 bg-white rounded shadow-sm h-100">
+              <p class="mb-2 text-muted">
+                "Amazing roast and quick delivery—every cup tastes like it was
+                made just for me."
+              </p>
+              <div class="d-flex align-items-center mt-3">
+                <div class="avatar rounded-circle me-3">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/6/68/Joe_Biden_presidential_portrait.jpg"
+                    alt="Joe Biden"
+                    onerror="this.style.display='none'"
+                  />
+                  <span class="initials">J</span>
+                </div>
+                <div>
+                  <strong>Joe Biden</strong>
+                  <div class="small text-muted">New York</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="testimonial-card p-4 bg-white rounded shadow-sm h-100">
+              <p class="mb-2 text-muted">
+                "The subscription box keeps my kitchen stocked — love the
+                seasonal blends!"
+              </p>
+              <div class="d-flex align-items-center mt-3">
+                <div class="avatar rounded-circle me-3">
+                  <img
+                    src="../Image/ChatGPT Image Jul 3, 2025, 10_19_44 AM.png"
+                    alt="Song Samnang"
+                    onerror="this.style.display='none'"
+                  />
+                  <span class="initials">S</span>
+                </div>
+                <div>
+                  <strong>Song Samnang.</strong>
+                  <div class="small text-muted">Phnom Penh</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Featured Products -->
+      <section class="py-4">
+        <h2 class="text-center mb-4">Featured Products</h2>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <article
+              class="product-card p-3 bg-white rounded shadow-sm h-100 d-flex flex-column"
+            >
+              <div class="product-image mb-3">
+                <img
+                  src="../Image/924621.jpg"
+                  alt="Artisan Coffee Beans"
+                  class="product-img"
+                />
+              </div>
+              <h3 class="product-title mb-2">Artisan Coffee Beans</h3>
+              <p class="product-desc text-muted mb-3">
+                Freshly roasted beans with rich caramel notes — perfect for
+                pour-over or espresso.
+              </p>
+              <div
+                class="mt-auto d-flex justify-content-between align-items-center"
+              >
+                <strong class="text-dark">$15.99</strong>
+                <button
+                  class="btn btn-primary btn-sm add-to-cart"
+                  data-id="prod-1"
+                  data-name="Artisan Coffee Beans"
+                  data-price="15.99"
+                >
+                  Buy
+                </button>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-md-4">
+            <article
+              class="product-card p-3 bg-white rounded shadow-sm h-100 d-flex flex-column"
+            >
+              <div class="product-image mb-3">
+                <img
+                  src="../Image/1015556.jpg"
+                  alt="Signature Latte Blend"
+                  class="product-img"
+                />
+              </div>
+              <h3 class="product-title mb-2">Signature Latte Blend</h3>
+              <p class="product-desc text-muted mb-3">
+                A smooth, balanced blend designed for creamy lattes and
+                cappuccinos.
+              </p>
+              <div
+                class="mt-auto d-flex justify-content-between align-items-center"
+              >
+                <strong class="text-dark">$12.99</strong>
+                <button
+                  class="btn btn-primary btn-sm add-to-cart"
+                  data-id="prod-2"
+                  data-name="Signature Latte Blend"
+                  data-price="12.99"
+                >
+                  Buy
+                </button>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-md-4">
+            <article
+              class="product-card p-3 bg-white rounded shadow-sm h-100 d-flex flex-column"
+            >
+              <div class="product-image mb-3">
+                <img
+                  src="../Image/a-cup-of-coffee-in-the-morning-mountains-mountains-mountains-mountains-mountains-mountains-ai-generated-free-photo.jpg"
+                  alt="Baked Goods Pairing"
+                  class="product-img"
+                />
+              </div>
+              <h3 class="product-title mb-2">Baked Goods Pack</h3>
+              <p class="product-desc text-muted mb-3">
+                A selection of our freshest pastries — perfect pairing with
+                coffee.
+              </p>
+              <div
+                class="mt-auto d-flex justify-content-between align-items-center"
+              >
+                <strong class="text-dark">$9.99</strong>
+                <button
+                  class="btn btn-primary btn-sm add-to-cart"
+                  data-id="prod-3"
+                  data-name="Baked Goods Pack"
+                  data-price="9.99"
+                >
+                  Buy
+                </button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="about-section py-5">
+        <div class="row align-items-center g-4">
+          <div class="col-md-5">
+            <div
+              class="about-image rounded shadow-sm d-flex align-items-center justify-content-center"
+              style="height: 320px"
+            >
+              <img
+                src="../Image/389822-blackangel.jpg"
+                alt="Golden Brown shop interior"
+                class="about-img rounded"
+              />
+            </div>
+          </div>
+          <div class="col-md-7">
+            <h2>About Golden Brown</h2>
+            <p class="lead text-muted">
+              Golden Brown started in Brewtown with a simple idea: every cup
+              should taste like care. We partner with small farmers, roast in
+              small batches, and deliver fresh coffee and handcrafted pastries
+              to the community.
+            </p>
+            <p class="text-muted">
+              We believe in ethical sourcing, sustainable practice, and sharing
+              the joy of coffee. Our blends are crafted to highlight each bean's
+              unique characteristics — from bright and fruity to deep and
+              chocolatey.
+            </p>
+            <div class="row g-3 mt-3">
+              <div class="col-sm-6">
+                <h5>Ethically Sourced</h5>
+                <p class="text-muted small mb-0">
+                  We work directly with growers to source traceable, fair-priced
+                  beans.
+                </p>
+              </div>
+              <div class="col-sm-6">
+                <h5>Small-batch Roasts</h5>
+                <p class="text-muted small mb-0">
+                  Each roast is tuned to bring out the best flavors and aromas.
+                </p>
+              </div>
+              <div class="col-sm-6 mt-3">
+                <h5>Community Focus</h5>
+                <p class="text-muted small mb-0">
+                  We support local events and run community tasting sessions to
+                  share our coffee knowledge.
+                </p>
+              </div>
+              <div class="col-sm-6 mt-3">
+                <h5>Visit our Shop</h5>
+                <p class="text-muted small mb-0">
+                  Drop in for a fresh brew, seasonal pastries and a friendly
+                  conversation.
+                </p>
+              </div>
+            </div>
+            <a class="btn btn-outline-primary btn-sm mt-3" href="#services"
+              >Explore Our Coffee</a
+            >
+          </div>
+        </div>
+      </section>
+      <!-- How it Works: quick steps -->
+      <section class="how-it-works py-5">
+        <h2 class="text-center mb-4">How it works</h2>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div
+              class="process-step p-4 bg-white rounded shadow-sm text-center h-100"
+            >
+              <div class="process-icon mb-3">1</div>
+              <h4>Pick Your Coffee</h4>
+              <p class="text-muted">
+                Choose from single origin beans, blends, and limited editions.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div
+              class="process-step p-4 bg-white rounded shadow-sm text-center h-100"
+            >
+              <div class="process-icon mb-3">2</div>
+              <h4>Small-batch Roast</h4>
+              <p class="text-muted">
+                We roast fresh when you order, tuning roast profiles for flavor.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div
+              class="process-step p-4 bg-white rounded shadow-sm text-center h-100"
+            >
+              <div class="process-icon mb-3">3</div>
+              <h4>Delivered Fresh</h4>
+              <p class="text-muted">
+                Fast delivery and subscription options keep your cup full.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Contact Section -->
+      <section id="contact" class="py-5 mt-4">
+        <h2 class="text-center mb-4">Contact Us</h2>
+        <div class="row g-4 align-items-start">
+          <div class="col-md-6">
+            <form class="p-4 bg-white rounded shadow-sm">
+              <div class="mb-3">
+                <label for="contactName" class="form-label">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="contactName"
+                  placeholder="Your name"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="contactEmail" class="form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="contactEmail"
+                  placeholder="you@example.com"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="contactMessage" class="form-label">Message</label>
+                <textarea
+                  class="form-control"
+                  id="contactMessage"
+                  rows="5"
+                  placeholder="How can we help?"
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">
+                Send Message
+              </button>
+            </form>
+          </div>
+          <div class="col-md-6">
+            <div class="p-4 bg-white rounded shadow-sm">
+              <h4>Visit or contact</h4>
+              <p class="text-muted mb-1">
+                Golden Brown Coffee<br />Phnom Penh, ST 33241
+              </p>
+              <p class="text-muted mb-1">Phone: (+855) 010-425-763</p>
+              <p class="text-muted">
+                Email:
+                <a href="mailto:goldenbrown@gmail.com"
+                  >goldenbrown@gmail.com</a
+                >
+              </p>
+              <hr />
+              <h6 class="mb-2">Hours</h6>
+              <p class="text-muted mb-1 small">Mon–Fri: 7:00 AM – 6:00 PM</p>
+              <p class="text-muted mb-1 small">Sat: 8:00 AM – 4:00 PM</p>
+              <p class="text-muted mb-1 small">Sun: Closed</p>
+              <hr />
+              <div class="contact-map mt-3 rounded overflow-hidden shadow-sm">
+                <!-- Google Maps embed; replace query with your shop address if needed -->
+                <iframe
+                  title="Golden Brown location"
+                  src="https://www.google.com/maps?q=123%20Coffee%20Lane%2C%20Brewtown%2C%20BT%2012345&z=16&output=embed"
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+                <div class="map-actions">
+                  <a
+                    class="small"
+                    href="https://www.google.com/maps/search/?api=1&query=123%20Coffee%20Lane%2C%20Brewtown%2C%20BT%2012345"
+                    target="_blank"
+                    rel="noopener"
+                    >Open in Google Maps</a
+                  >
+                </div>
+              </div>
+              <hr />
+              <h5 class="mb-2">More Links</h5>
+              <ul class="list-unstyled">
+                <li><a href="#">Account</a></li>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Control Panel</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Inline CSS moved to ../CSS/Style.Css -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Cart modal -->
+    <div
+      class="modal fade"
+      id="cartModal"
+      tabindex="-1"
+      aria-labelledby="cartModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="cartModalLabel">Shopping Cart</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div id="cartItemsWrapper" class="table-responsive">
+              <table class="table table-borderless align-middle mb-0">
+                <thead>
+                  <tr>
+                    <th>Item</th>
+                    <th class="text-end">Price</th>
+                    <th class="text-center">Qty</th>
+                    <th class="text-end">Subtotal</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="cartItems"></tbody>
+              </table>
+            </div>
+            <div class="d-flex justify-content-end mt-3">
+              <div class="text-end">
+                <div class="fw-bold">
+                  Total: <span id="cartTotal">$0.00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Continue shopping
+            </button>
+            <button type="button" id="checkoutBtn" class="btn btn-primary">
+              Checkout
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../JavaScript/Repo.Js"></script>
+    <footer class="site-footer mt-5">
+      <div class="container py-5">
+        <div class="row g-4">
+          <div class="col-md-4">
+            <h5>Golden Brown</h5>
+            <p class="text-muted">
+              Quality coffee &amp; pastries delivered with care. Ethically
+              sourced and always fresh.
+            </p>
+            <div class="social-links mt-2">
+              <a href="#" class="me-2"
+                ><i class="lni lni-facebook-original"></i
+              ></a>
+              <a href="#" class="me-2"
+                ><i class="lni lni-instagram-original"></i
+              ></a>
+              <a href="#" class="me-2"
+                ><i class="lni lni-twitter-original"></i
+              ></a>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <h6>Quick Links</h6>
+            <ul class="list-unstyled">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <h6>Contact</h6>
+            <p class="text-muted mb-1">
+              Golden Brown Coffee<br />Phnom Penh, ST 33241
+            </p>
+            <p class="text-muted mb-1">Phone: (+855) 010-425-763</p>
+            <p class="text-muted">
+              Email:
+              <a href="mailto:goldenbrown@gmail.com"
+                >goldenbrown@gmail.com</a
+              >
+            </p>
+          </div>
+          <div class="col-md-3">
+            <h6>Newsletter</h6>
+            <p class="text-muted">
+              Subscribe to receive offers and new product announcements.
+            </p>
+            <form class="d-flex" id="footerSubscribeForm">
+              <input
+                class="form-control form-control-sm me-2"
+                type="email"
+                placeholder="Email address"
+                aria-label="Subscribe email"
+                required
+              />
+              <button class="btn btn-primary btn-sm" type="submit">
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div class="row mt-4">
+          <div class="col-12 d-flex justify-content-between align-items-center">
+            <p class="mb-0 small text-muted">
+              &copy; 2025 Golden Brown. All rights reserved.
+            </p>
+            <!-- Back-to-top removed per request -->
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
